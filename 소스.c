@@ -1,14 +1,31 @@
 #include <stdio.h>
-
-int main()
-{
-	int n;
-	scanf_s("%d", &n);
-	for (int i = 1; i <= n; i++){
-		for (int s = 1; s <= i; s++){
-			printf("*");
+#include <string.h>
+void delete_a_char(char *s, char c){
+	// 문자열 문자 하나하나 보자
+	for (int i = 0; i < strlen(s); i++){
+		if (s[i] == c){
+			for (int j = i; j < strlen(s); j++){
+				s[j] = s[j + 1];
+			}
+			break;
 		}
-		printf("\n");
 	}
+}
+void delete_chars(char *s, char c){
+	for (int i = 0; i < strlen(s); i++){
+		if (s[i] == c){
+			for (int j = i; j < strlen(s); j++){
+				s[j] = s[j + 1];
+			}
+		}
+	}
+}
+int main(){
+	char str[80];
+	gets(str);
+	delete_a_char(str, 'o');
+	puts(str);
+	delete_chars(str, 'g');
+	puts(str);
 	return 0;
 }
